@@ -1,10 +1,25 @@
-const createApp = require('../lib');
+// Logger
+const winston = require('winston');
+winston.level = process.env.LOG_LEVEL || 'info';
+winston.profile('server_init');
 
+const _ = require('lodash');
+
+// Load environment variables
 require('dotenv').load();
 
-const app = createApp();
+// Check to make sure all critical options have been set
+// If we are missing an option, exit the application and log the error
 
-const port = process.env.SERVER_PORT || 3000;
+if(_.isNil(process.env.SERVER_PORT)){
+	winston.log('error', "No server listening port specified. Specify listening port in .env. Exiting");
+	process.exit(1);
+}
+
+const app = require('../lib');
+const port = process.env.SERVER_PORT;
+
 app.listen(port, function(){
-	console.log("Server listening on port: " + port);
+	winston.log('info', "Server listening on port: " + port);
+	winston.profile('server_init');
 });
