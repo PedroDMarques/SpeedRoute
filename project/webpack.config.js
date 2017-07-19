@@ -12,17 +12,34 @@ module.exports = {
 	},
 
 	module: {
-		loaders: [{
-			test: /\.js?$/,
-			exclude: /(node_modules|bower_components)/,
-			loader: 'babel-loader',
-			query: {
-				presets: ['react', 'es2015'],
-				plugins: [
-					["transform-react-jsx", {"pragma":"h"}]
-				],
+		loaders: [
+			{
+				test: /\.js?$/,
+				exclude: /(node_modules|bower_components)/,
+				loader: 'babel-loader',
+				query: {
+					presets: ['react', 'es2015', 'stage-0'],
+					plugins: [
+						["transform-react-jsx", {"pragma":"h"}],
+						["import", {
+							"libraryName": "antd",
+							"style": "css"
+						}]
+					],
+				}
+			},{
+				"test": /\.css?$/,
+				loader: "style-loader!css-loader",
 			}
-		}]
+		]
+	},
+
+	"resolve": {
+		"alias": {
+			"react": "preact-compat",
+			"react-dom": "preact-compat",
+			"create-react-class": "preact-compat/lib/create-react-class"
+		}
 	},
 
 	output: {
