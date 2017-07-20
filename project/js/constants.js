@@ -1,0 +1,5 @@
+export default {
+	"HEADER_HEIGHT": 48,
+	"FOOTER_HEIGHT": 48,
+	"CONTENT_MIN_HEIGHT": 624,
+}

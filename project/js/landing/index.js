@@ -1,12 +1,23 @@
-import { h, render } from 'preact';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import TestingComponent from './components/TestingComponent';
+import { Layout } from 'antd';
+
+import Header from '../components/Header';
+import Content from '../components/Content';
+import Footer from '../components/Footer';
 
 import store from './store';
 
-render((
+ReactDOM.render(
 	<Provider store={store}>
-		<TestingComponent />
+		<Layout>
+			<Header />
+			<Content>
+				This is the content right here mayteee!!!!
+			</Content>
+			<Footer />
+		</Layout>
 	</Provider>
-), document.body);
+, document.getElementById('app'));

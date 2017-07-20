@@ -20,7 +20,6 @@ module.exports = {
 				query: {
 					presets: ['react', 'es2015', 'stage-0'],
 					plugins: [
-						["transform-react-jsx", {"pragma":"h"}],
 						["import", {
 							"libraryName": "antd",
 							"style": "css"
@@ -32,14 +31,6 @@ module.exports = {
 				loader: "style-loader!css-loader",
 			}
 		]
-	},
-
-	"resolve": {
-		"alias": {
-			"react": "preact-compat",
-			"react-dom": "preact-compat",
-			"create-react-class": "preact-compat/lib/create-react-class"
-		}
 	},
 
 	output: {
